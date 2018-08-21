@@ -22,7 +22,6 @@ var winCounter = 0; //never gets reset back to zero
 var lossCounter = 0; //never gets reset back to zero
 var guessesLeft = initial_guessesLeft;
 var computerPick = " ";
-var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var userChoices = initial_guesses;
 var userChoice = "";
 
@@ -87,12 +86,13 @@ resetGame();
 document.onkeyup = function(event) {
     //capture userChoice
     userChoice = event.key;
+    userChoice = userChoice.toLowerCase();
     
     //*Ignore anything except letters and ignore duplicate choices*//
     if (userChoice.length === 1 
-            && userChoice.toLowerCase() >= "a" 
-            && userChoice.toLowerCase() <= "z" 
-            && userChoices.indexOf(userChoice.toLowerCase()) < 0) {
+            && userChoice >= "a" 
+            && userChoice <= "z" 
+            && userChoices.indexOf(userChoice) < 0) {
         //valid entry
 
             //is the choice right or wrong
@@ -139,10 +139,6 @@ document.onkeyup = function(event) {
 
             }
 
-            //lower case user choice for comparison purposes
-            userChoice = userChoice.toLowerCase();
         }
 
 } //close onkeyup function
-
-
