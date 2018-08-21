@@ -1,15 +1,15 @@
-#Word-Guess-Game PsuedoCode
+# Word-Guess-Game PsuedoCode
 
-##Start The Game
+## Start The Game
 *Note: The functions needed to start the game can be reused to reset the game after the word has been guessed or the user has used up all guesses.*
 * Choose a random word
   * Random word comes from array of words
   * pick one of the words in the array using random math functions
 
-##Play The Game
+## Play The Game
 * capture user keystroke
 
-##End of Game - Reset 
+## End of Game - Reset 
 
   
 
