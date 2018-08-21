@@ -1,3 +1,4 @@
+"use strict";
 /*Functions that are likely to be reused in many different applications*/
 
 //function for random computer choice
@@ -58,7 +59,7 @@ function stringMask(str, str2='') {
 
     //initialize variable because if you don't reset wordBlank it will repeat in the display
     wordBlank="";
-    for (i=0; i<str.length; i++) {
+    for (var i=0; i<str.length; i++) {
 
         //spaces in word phrases are displayes as spaces.  Letters are displyed as underscores
         if (str.charAt(i) === " ") {
@@ -87,58 +88,60 @@ document.onkeyup = function(event) {
     //capture userChoice
     userChoice = event.key;
     
-    //******NEED TO WRITE FUNCTION TO ONLY DISPLAY LETTERS*******//
-    if (userChoice.length === 1 && userChoice.toLowerCase() >= "a" && userChoice.toLowerCase() <= "z") {
+    //*Ignore anything except letters and ignore duplicate choices*//
+    if (userChoice.length === 1 
+            && userChoice.toLowerCase() >= "a" 
+            && userChoice.toLowerCase() <= "z" 
+            && userChoices.indexOf(userChoice.toLowerCase()) < 0) {
         //valid entry
 
-        //is the choice right or wrong
-        //indexOf will return a -1 if the letter doesn't exist in the random word
-        if (computerPick.indexOf(userChoice) < 0) {
+            //is the choice right or wrong
+            //indexOf will return a -1 if the letter doesn't exist in the random word
+            if (computerPick.indexOf(userChoice) < 0) {
 
-            //deal with comma 
-            if (userChoices === "") {
-                userChoices = userChoice;   
+                //deal with comma 
+                if (userChoices === "") {
+                    userChoices = userChoice;   
+                } else {
+                    userChoices = userChoices + ", " + userChoice;
+                }
+
+                //decrease guesses left
+                guessesLeft = guessesLeft - 1;
+                changeDisplay("guessesLeft", guessesLeft);
+
+                //test to see if game over
+                if (guessesLeft === 0) {
+
+                    //increment losses
+                    lossCounter = lossCounter + 1;
+                    changeDisplay("lossCounter", lossCounter);
+                    resetGame()
+                }
+                
+                //display user choices as wrong guesses
+                changeDisplay("wrongGuesses", userChoices);
+                //changeDisplay("userChoice", userChoice);
+
             } else {
-                userChoices = userChoices + ", " + userChoice;
+                //display the user choices as right guesses in the random word display
+                rightChoices = rightChoices + userChoice;
+                //reformatting the mask to include the right letters entered
+                changeDisplay("wordBlanks", stringMask(computerPick, rightChoices))
+
+                //test to see if win;  a win has no more underscores in the mask.
+                if (wordBlank.indexOf("_") < 0) {
+                    //increment wins, change display & reset game
+                    winCounter = winCounter + 1;
+                    changeDisplay("winCounter", winCounter)
+                    resetGame();
+                }
+
             }
 
-            //decrease guesses left
-            guessesLeft = guessesLeft - 1;
-            changeDisplay("guessesLeft", guessesLeft);
-
-            //test to see if game over
-            if (guessesLeft === 0) {
-
-                //increment losses
-                lossCounter = lossCounter + 1;
-                changeDisplay("lossCounter", lossCounter);
-                resetGame()
-            }
-            
-            //display user choices as wrong guesses
-            changeDisplay("wrongGuesses", userChoices);
-            //changeDisplay("userChoice", userChoice);
-
-        } else {
-            //display the user choices as right guesses in the random word display
-            rightChoices = rightChoices + userChoice;
-            //reformatting the mask to include the right letters entered
-            changeDisplay("wordBlanks", stringMask(computerPick, rightChoices))
-
-            //test to see if win;  a win has no more underscores in the mask.
-            if (wordBlank.indexOf("_") < 0) {
-                //increment wins, change display & reset game
-                winCounter = winCounter + 1;
-                changeDisplay("winCounter", winCounter)
-                resetGame();
-            }
-
+            //lower case user choice for comparison purposes
+            userChoice = userChoice.toLowerCase();
         }
-
-        //lower case user choice for comparison purposes
-        userChoice = userChoice.toLowerCase();
-
-    } 
 
 } //close onkeyup function
 

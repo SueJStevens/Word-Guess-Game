@@ -36,3 +36,17 @@ footer {
     font-size: .75rem;
     margin-top: 60px;
 }
+
+#jumbotron_tiedye {
+    border-bottom: solid;
+    border-color: #1F2936;
+    background: #fff url("../images/tiedyebackground0002.jpg") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.yellow_tyedye {
+    color: rgb(255, 238, 0);
+}
