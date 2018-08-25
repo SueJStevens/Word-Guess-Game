@@ -43,27 +43,58 @@
         <div class="container text-center">
           <h1 class="yellow_tyedye"><strong>Guess! The! Word!</strong></h1>
           <h2 class="yellow_tyedye">The category is . . .</h2>
-          <h3 class="yellow_tyedye">Animals</h3>
+          <h3 class="yellow_tyedye">Weather</h3>
           <small class="yellow_tyedye">Type any letter to begin</small>
         </div>
       </div>
   
       <!-- Game counters all held here. cards are being used to hold various sections. -->
       <div class="row">
-        <div class="col-lg-12">
-  
-          <!-- First card: Holds the Word to Guess (blanks and guessed word) -->
+        <div class="col-lg-4">
+
+          <!-- Row1 cards: Holds the Word to Guess (blanks and guessed word) -->
           <div class="card">
             <div class="card-header">
               <h3 class="card-title"><strong>Word to Guess</strong></h3>
             </div>
             <div class="card-body">
-              <!-- This h3 section called wordblanks is what we'll be replacing with letters as the user guesses.
-              Pay particular attention to the id called ***wordblanks***. We'll be referencing this in the JavaScript. -->
               <h3 id="wordBlanks">_ _ _ _ _ _ _ _ _ </h3>
             </div>
           </div>
+          </div>
   
+          <div class="col-lg-4">
+
+          <!-- Row1 cards: Holds the Hangman Emoji -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><strong>Hangman Emoji</strong></h3>
+            </div>
+            <div class="card-body">
+              <h3 id="emoji"></h3>
+              <h3 id="emoji1"></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+
+          <!-- Row 1 Cards: On Loss Displays the Last Word-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><strong>The Last Word Played</strong></h3>
+            </div>
+            <div class="card-body">
+              <h3 id="lastWord"></h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          
           <!-- Second card: Holds the list of Wrong User Guesses. -->
           <div class="card">
             <div class="card-body">
@@ -102,7 +133,7 @@
           </div>
 
           <!-- Hidden Card: Holds the value the computer picked. -->
-          <div class="card">
+          <div class="card d-none">
             <div class="card-body">
               <strong>Computer Pick: </strong> <span id="computerPick"></span>
             </div>
@@ -120,8 +151,8 @@
           <!--spans a fixed width based on media sizes developed by bootstrap-->
           <div class="container">
               <!--Nav Bar copyright in footer-->
-              <nav class="navbar navbar-expand-lg align-middle pl-0">
-                  <span id="copyright" class="align-middle">&copy; Copyright 2018 Sue J. Stevens</span>
+              <nav class="navbar navbar-expand-lg justify-content-md-center pl-0">
+                  <span id="copyright">&copy; Copyright 2018 Sue J. Stevens</span>
               </nav>
           </div>
       </div>
