@@ -8,7 +8,7 @@ Bootcamp Assignment 8/18/2018 - Word Guess Game
 ## Description
 Simple app to feature dynamically updated HTML and CSS powered by JavaScript code.
 
-* The app randomly picks a word or phrase which the user tries to gess.
+* The app randomly picks a word or phrase which the user tries to guess.
 * The user gets 9 guesses.
 * Ignores repeat letters
 * Ignores numbers and symbols
