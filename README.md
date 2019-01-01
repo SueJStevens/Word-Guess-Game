@@ -1,4 +1,5 @@
 # Word-Guess-Game
+Simple app to feature dynamically updated HTML and CSS powered by JavaScript code.     
 Bootcamp Assignment 8/18/2018 - Word Guess Game
 
 ## Demo
